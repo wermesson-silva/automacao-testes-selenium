@@ -17,5 +17,25 @@
   		<artifactId>junit</artifactId>
   		<version>4.13</version>
   	</dependency>
+  	
+  	<dependency>
+        <groupId>com.aventstack</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>5.0.9</version>
+    </dependency>
   </dependencies>
+  
+   <build>
+    <plugins>
+      <!-- Plugin para rodar testes e gerar relatório -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <reportsDirectory>target/surefire-reports</reportsDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
