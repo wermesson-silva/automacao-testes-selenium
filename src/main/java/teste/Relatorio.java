@@ -37,7 +37,7 @@ public class Relatorio {
 		navegador.get("https://sigaa.ufrn.br/");
 		
 		try {
-			navegador.findElement(By.xpath("/html/body/div/div/div[1]/div[2]/div/ul/li[3]/a")).click();
+			navegador.findElement(By.className("login")).click();
 			test.pass("Clicou no botão de Login");
 		} catch (Exception e) {
 			test.fail("Erro ao tentar clicar no botão de Login: " + e.getMessage());
@@ -45,8 +45,8 @@ public class Relatorio {
 		}
 		
 		try {
-			navegador.findElement(By.xpath("/html/body/div/main/div/form/div[3]/input")).sendKeys("");
-			navegador.findElement(By.xpath("/html/body/div/main/div/form/div[4]/input")).sendKeys("",
+			navegador.findElement(By.id("username")).sendKeys("");
+			navegador.findElement(By.id("password")).sendKeys("",
 					Keys.ENTER);
 			test.pass("Preencheu os dados de login");
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class Relatorio {
 		}
 		
 		try {
-			navegador.findElement(By.xpath("/html/body/dialog/button")).click();
+			navegador.findElement(By.xpath("/html/body/dialog/butto")).click();
 			test.pass("Fez login");
 		} catch (Exception e) {
 			registrarPrint("Erro ao fazer Login", navegador);
@@ -75,7 +75,7 @@ public class Relatorio {
     
     public void registrarPrint(String mensagem, WebDriver navegador) {
     	File src = ((TakesScreenshot) navegador).getScreenshotAs(OutputType.FILE);
-	    String caminho = "screenshot.png";
+	    String caminho = "screenshot_" + System.currentTimeMillis() + ".png";
 	    try {
 			Files.copy(src.toPath(), new File(caminho).toPath());
 		} catch (IOException e1) {
